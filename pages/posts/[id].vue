@@ -1,6 +1,6 @@
 <template>
     <div>
-        <p>This is index page</p>        
+        <p>This is post page</p>
     </div>
 </template>
 
@@ -8,6 +8,6 @@
 
 </script>
 
-<style>
+<style lang="scss" scoped>
 
 </style>
