@@ -5,7 +5,7 @@
             class="">
             <template
                 v-for="(item, index) in listArticle.articles" :key="index">
-                <div>
+                <div class="border-t border-[lightgray] py-4">
                     <div class="flex items-center justify-between mb-1">
                         <div class="flex items-center gap-2">
                             <div class="w-[32px] h-[32px] overflow-hidden rounded-full">
@@ -25,10 +25,10 @@
                     <p class="text-base mb-1 text-[gray]">{{ item?.description }}</p>
                     <div class="flex items-center justify-between">
                         <p class="text-[gray] text-sm">Read more</p>
-                        <div class="flex items-center justify-center">
-                            <template v-for="(tag, index) in item.tagList">
-                                <span>
-
+                        <div class="flex items-center justify-center gap-1">
+                            <template v-for="(tag, index) in item.tagList" :key="index">
+                                <span class="text-[gray] px-1 border border-[gray] rounded-xl text-xs">
+                                    {{ tag }}
                                 </span>
                             </template>
                         </div>

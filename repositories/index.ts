@@ -7,7 +7,10 @@ export default (http: AxiosInstance) => {
             return http.get(`/articles`, {
                 params,
             });
-        }
+        },
+        login(params: any = {}) {
+            return http.post(`/users/login`, params);
+        },
     }   
 }
 
