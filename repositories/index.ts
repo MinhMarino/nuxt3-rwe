@@ -1,13 +1,13 @@
-import axios, { AxiosInstance  } from 'axios';
-import config from '@/config/axiosConfig';
+import { AxiosInstance } from "axios";
 
-const axiosConfig: AxiosInstance = axios.create(config);
-
-export default {
-    getAllArticles(params: any = {}) {
-        return axiosConfig.get(`/articles`, {
-            params,
-        });
-    }
+export default (http: AxiosInstance) => {
+    return {
+        getAllArticles(params: any = {}) {
+            // console.log("http", http);
+            return http.get(`/articles`, {
+                params,
+            });
+        }
+    }   
 }
 

@@ -160,7 +160,6 @@
 </template>
 
 <script setup>
-const nuxtApp = useNuxtApp();
 </script>
 
 <style lang="scss" scoped></style>
