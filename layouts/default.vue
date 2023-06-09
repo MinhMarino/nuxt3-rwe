@@ -3,7 +3,10 @@
     <ClientOnly>
       <Header/>
     </ClientOnly>
-    <slot />
+    <div class="max-w-[1160px] mx-auto">
+      <slot class="max-w-[1160px]"/>
+
+    </div>
     <Footer />
   </div>
 </template>

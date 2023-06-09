@@ -8,8 +8,9 @@ const SERVER_ERROR = 500;
 const OK = 200;
 
 export default defineNuxtPlugin(() => {
-    const config = useRuntimeConfig()
+    const config = useRuntimeConfig();
     const apiBaseUrl = config.public.apiBaseUrl;
+    const access_token = useCookie('access_token') || '';
     const instance: AxiosInstance = axios.create({
         baseURL: apiBaseUrl,
         headers: {
@@ -18,7 +19,7 @@ export default defineNuxtPlugin(() => {
         },
     });
     instance.interceptors.request.use(function (config) {
-        const accessToken :string = String(useCookie('access_token') || '');
+        const accessToken :string = String(access_token);
         if (accessToken) {
             config.headers['Authorization'] = accessToken;
         }
