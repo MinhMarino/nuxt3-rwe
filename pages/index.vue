@@ -1,12 +1,12 @@
 <template>
     <div>
-        <p>This is index page</p>
-        <div class="grid grid-cols-12">
-            <div class="col-span-10">
+        <p class="text-[#5CB85C] font-bold my-6 text-2xl">News Feed</p>
+        <div class="grid grid-cols-12 gap-4">
+            <div class="col-span-9">
                 <ListArticles/>
             </div>
-            <div class="col-span-2">
-
+            <div class="col-span-3">
+                <ListTags/>
             </div>
         </div>
     </div>
@@ -14,20 +14,7 @@
 
 <script setup>
 import ListArticles from '@/components/common/ListArticles.vue';
-import { ref, onMounted } from 'vue';
-const { $http } = useNuxtApp();
-const listArticle = ref([]);
-
-// const { data } = useAsyncData(async () => {
-//     const data = await $http.getAllArticles();
-//     return await $http.getAllArticles();
-// })
-
-// onMounted(async () => {
-//     const data = await $http.getAllArticles();
-//     listArticle.value = data;
-// })
-
+import ListTags from '@/components/common/ListTags.vue';
 </script>
 
 <style>

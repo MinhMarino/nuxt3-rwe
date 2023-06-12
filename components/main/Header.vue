@@ -90,7 +90,6 @@
       <div class="relative flex items-center">
         <!-- Second dropdown container -->
         <div class="relative" data-te-dropdown-ref>
-          <!-- Second dropdown trigger -->
           <a
             class="hidden-arrow flex items-center whitespace-nowrap transition duration-150 ease-in-out motion-reduce:transition-none"
             href="#"
@@ -108,7 +107,6 @@
               loading="lazy"
             />
           </a>
-          <!-- Second dropdown menu -->
           <ul
             class="absolute left-auto right-0 z-[1000] float-left m-0 mt-1 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block"
             aria-labelledby="dropdownMenuButton2"

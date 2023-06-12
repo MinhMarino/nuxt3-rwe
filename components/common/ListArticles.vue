@@ -1,10 +1,13 @@
 <template>
     <div class="w-full">
+        <div v-if="pending">
+            <p>Loading</p>
+        </div>
         <div 
-            v-if="!pending" 
+            v-else
             class="">
             <template
-                v-for="(item, index) in listArticle.articles" :key="index">
+                v-for="(item, index) in listArticle.data.articles" :key="index">
                 <div class="border-t border-[lightgray] py-4">
                     <div class="flex items-center justify-between mb-1">
                         <div class="flex items-center gap-2">
@@ -34,7 +37,15 @@
                         </div>
                     </div>
                 </div>                
-            </template>            
+            </template>
+            <VPagination
+                v-model="page"
+                :pages="10"
+                :range-size="1"
+                :hideFirstButton="true"
+                :hideLastButton="true"
+                active-color=""
+            />           
         </div>
     </div>
 </template>
@@ -42,13 +53,37 @@
 <script setup lang="ts">
 const { $http } = useNuxtApp();
 const dateFormat = useMoment();
+const page = ref(1);
 
 const { data: listArticle, pending } = await useLazyAsyncData(async () => {
-    const data = await $http.getAllArticles();
-    return data.data;
+    const data = await $http.getAllArticles({
+        limit: 10,
+        offset: 10 * page.value,
+    });
+    return data;
+}, {
+    watch: [page]
 })
 </script>
 
-<style scoped>
-
+<style lang="scss" scoped>
+:deep(.Pagination) {
+    justify-content: center;
+    padding: 30px 0px;
+    li {       
+        button {
+            width: 30px !important;
+            height: 30px !important;
+            padding: 8px !important;
+            border-radius: 8px !important;
+            font-size: 16px;
+            font-weight: bold;
+            color: #5CB85C;            
+        }
+        .Page-active {
+            background-color: #5CB85C;
+            color: white;
+        }
+    }
+}
 </style>

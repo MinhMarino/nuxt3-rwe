@@ -8,8 +8,13 @@ export default defineNuxtConfig({
     },
   },
   modules: [
-    
+    '@pinia/nuxt',
   ],
+  pinia: {
+    autoImports: [
+      'defineStore',
+    ],
+  },
   plugins: [
     {
       src: '~/plugins/axiosInstance',
