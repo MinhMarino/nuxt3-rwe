@@ -6,8 +6,7 @@ export const useMainStore = defineStore('main', {
   }),
   actions: {
     increment() {
-      // `this` is the store instance
-      this.counter++
+      this.counter = 2
     },
   },
 })

@@ -10,7 +10,7 @@ const OK = 200;
 export default defineNuxtPlugin(() => {
     const config = useRuntimeConfig();
     const apiBaseUrl = config.public.apiBaseUrl;
-    const access_token = useCookie('access_token') || '';
+    const access_token = useCookie('access_token').value || '';
     const instance: AxiosInstance = axios.create({
         baseURL: apiBaseUrl,
         headers: {
