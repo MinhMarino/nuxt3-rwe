@@ -1,18 +1,16 @@
 import useUserStore from '@/store/user';
 
 export default defineNuxtRouteMiddleware((to, from) => {
-    const userStore = useUserStore();
+    const { $pinia } = useNuxtApp();
+    const userStore = useUserStore($pinia);
     // only run in client
     if (process.client) {
         const access_token = useCookie('access_token').value || '';
         try {
             const decodedData = decodeJWT(access_token);
-            const nuxtApp = useNuxtApp();
-            const userStore = useUserStore(nuxtApp.$pinia);
-            userStore.setUser({name: "minh"});
-            console.log("nuxtApp: ", nuxtApp);
+            userStore.setUser(decodedData?.payload);            
         } catch (err) {
-            
+            return navigateTo('/')
         }
     }
 })

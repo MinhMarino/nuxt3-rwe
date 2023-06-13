@@ -5,22 +5,15 @@ const useUserStore = defineStore('user', {
     user: {
       name: "hao"
     },
-    count: 0,
   }),
   getters: {
-    user: (state) => {
+    getUser: (state) => {
       return state.user;
     },
-    getterCount: (state) => {
-      return state.count;
-    }
   },
   actions: {
     setUser(user: any) {
       this.user = user;
-    },
-    increment() {
-      this.count++
     },
   },
 })
