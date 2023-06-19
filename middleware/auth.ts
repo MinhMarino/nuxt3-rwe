@@ -10,7 +10,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
             const decodedData = decodeJWT(access_token);
             userStore.setUser(decodedData?.payload);            
         } catch (err) {
-            return navigateTo('/')
+            return navigateTo('/', { redirectCode: 301 });
         }
     }
 })

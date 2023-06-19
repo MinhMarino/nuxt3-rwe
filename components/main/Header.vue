@@ -89,7 +89,10 @@
       <!-- Right elements -->
       <div class="relative flex items-center">
         <!-- Second dropdown container -->
-        <div class="relative" data-te-dropdown-ref>
+        <div 
+          v-if="isLogined"
+          class="relative"
+          data-te-dropdown-ref>
           <a
             class="hidden-arrow flex items-center whitespace-nowrap transition duration-150 ease-in-out motion-reduce:transition-none"
             href="#"
@@ -131,6 +134,16 @@
             </li>
           </ul>
         </div>
+        <div 
+          v-else
+          class="flex flex-wrap gap-2">
+          <nuxt-link to="/login" class="rounded-md border-2 w-[80px] h-[30x] flex items-center justify-center bg-[lightblue]">
+            Login
+          </nuxt-link>
+          <nuxt-link to="/register" class="rounded-md border-2 w-[80px] h-[30x] flex items-center justify-center bg-[lightblue]">
+            Register
+          </nuxt-link>
+        </div>
       </div>
     </div>
   </nav>
@@ -139,10 +152,16 @@
 <script setup>
 import { Collapse, Dropdown, initTE } from "tw-elements";
 import { onMounted } from "vue";
+import useAuth from '@/composables/useAuth';
+
 
 onMounted(() => {
   initTE({ Collapse, Dropdown });
 });
+
+const { user, isLogined } = useAuth();
+console.log("isLogined: ", isLogined.value);
+console.log("user: ", user.value);
 
 </script>
 

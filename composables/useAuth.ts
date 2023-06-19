@@ -1,25 +1,14 @@
-export const useAuth = () => {
-    const accessToken = String(useCookie('access_token'));
-    if (accessToken) {
-        const { payload } = decodeJWT(accessToken);
-        return {
-            isLogin: true,
-            user: payload,
-        }
-    }
+import useUserStore from '@/store/user';
+
+const useAuth = () => {
+    const { $pinia } = useNuxtApp();
+    const userStore = useUserStore($pinia);
+    const user = useState('user', () => userStore.getUser);
+    const isLogined = useState('isLogined', () => userStore.getUser ? true : false);
     return {
-        isLogin: false,
-        user: null,
+        user,
+        isLogined,
     }
 }
 
-function decodeJWT(token: string) {
-    const [headerBase64, payloadBase64, signature] = token.split('.');
-    const header = JSON.parse(atob(headerBase64));
-    const payload = JSON.parse(atob(payloadBase64));
-    return {
-        header,
-        payload,
-        signature
-    };
-}
+export default useAuth;

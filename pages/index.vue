@@ -13,11 +13,27 @@
 </template>
 
 <script setup>
-import useUserStore from '~/store/user';
+import { onMounted } from 'vue';
+import { useQuery } from '@tanstack/vue-query';
 import ListArticles from '@/components/common/ListArticles.vue';
 import ListTags from '@/components/common/ListTags.vue';
+
+onMounted(() => {
+    const result = useQuery({
+        queryKey: ['todos'],
+        queryFn: () => {
+            console.log("Refetch data");
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve("foo");
+                }, 100);
+            });;
+        },
+        refetchInterval: 1000,
+    })
+})
 </script>
 
 <style>
 
-</style>
+</style>``
