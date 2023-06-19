@@ -22,7 +22,6 @@ onMounted(() => {
     const result = useQuery({
         queryKey: ['todos'],
         queryFn: () => {
-            console.log("Refetch data");
             return new Promise((resolve, reject) => {
                 setTimeout(() => {
                     resolve("foo");
